@@ -6,8 +6,8 @@
   - [x] Apresentar o 'username' do usuário
   - [x] Apresentar o 'created_at' do usuário
   - [x] Apresentar botão para adicionar como amigo, remover amigo e enviar mensagens
-  - [ ] Apresentar todas as 'badges' do usuário
-  - [ ] Apresentar todos os 'teams' do usuário
+  - [x] Apresentar todas as 'badges' do usuário
+  - [x] Apresentar todos os 'teams' do usuário
 
 ### Não Funcionais
   - [x] Quando o usuário estiver online apresentar uma borda azul no 'avatar' do mesmo
