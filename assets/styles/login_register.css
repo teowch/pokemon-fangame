@@ -1,0 +1,128 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+hr.divider {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.form_login,
+.form_register {
+    width: 100%;
+    align-self: center;
+    border: var(--common-border);
+    background-color: #fff;
+    padding-bottom: 15px;
+}
+
+.form_login {
+    max-width: 400px;
+}
+
+.form_register {
+    max-width: 600px;
+}
+
+.form_login .title,
+.form_register .title {
+    padding: 15px;
+    background-color: #fcfcfc;
+    border-bottom: var(--common-border);
+}
+
+.title > h1 {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.form_login .input_block,
+.form_register .input_block {
+    width: 100%;
+    padding: 0 15px;
+}
+
+.input_block + .input_block {
+    margin-top: 20px;
+}
+
+.input_block label,
+.input_block input {
+    display: inline-block;
+    width: 100%;
+}
+
+.input_block label {
+    font-size: 0.85rem;
+}
+
+.input_block input {
+    background-color: #eee;
+    padding: 10px;
+    margin-top: 10px;
+    outline: 0;
+}
+
+.input_block input:focus {
+    box-shadow: 0 0 0 1px #0099e1, 0 0 0 3px #009ae162;
+}
+
+.input_block input:invalid {
+    box-shadow: 0 0 0 1px #f93a2f, 0 0 0 3px #f93a2f62;
+}
+
+.form_login .submit,
+.form_register .submit {
+    padding: 0 15px;
+    margin-top: 20px;
+}
+
+.submit .button_submit  {
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 7px;
+    background-color: #000;
+    height: max-content;
+    cursor: pointer;
+}
+
+.submit .button_submit i {
+  color: #fff;
+}
+
+.redirect-login,
+.redirect-register {
+  padding: 15px;
+  background-color: #fff;
+  color: var(--high-emphasis);
+  font-size: 1rem;
+  border: var(--common-border);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.redirect-login {
+  width: 600px;
+}
+
+.redirect-register {
+  width: 400px;
+}
+
+.redirect-login a,
+.redirect-register a {
+  text-decoration: none;
+  color: var(--low-emphasis);
+}
+
+.redirect-login a:hover,
+.redirect-register a:hover {
+  text-decoration: none;
+  color: var(--medium-emphasis);
+}
