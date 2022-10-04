@@ -31,14 +31,14 @@ if (!$team_id) {
 $team_pokemon = $query -> raw("SELECT pokemon_id FROM team_pokemon WHERE team_id = '".$team_id."';");
 
 $team = array('pokemons' => array());
-
-while ($pokemon_id = ($team_pokemon -> fetch_assoc())['pokemon_id']) {
+while ($pokemon_id = $team_pokemon -> fetch_assoc()) {
+    $pokemon_id = $pokemon_id['pokemon_id'];
     $pokemon = mysqli_fetch_assoc($query -> raw("SELECT species_id, ivs, evs FROM pokemon WHERE pokemon_id = '".$pokemon_id."';"));
     // $species = (mysqli_fetch_assoc($query -> raw("SELECT name FROM species WHERE species_id = '".$pokemon['species_id']."';"))['name'];
-
+    
     $ivs = explode(',', $pokemon['ivs']);
     $evs = explode(',', $pokemon['evs']);
-
+    
     $team['pokemons'][] = array(
         'id' => $pokemon['species_id'],
         'health_iv' => $ivs[0],

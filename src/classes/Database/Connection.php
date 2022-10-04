@@ -11,7 +11,7 @@ class Connection {
 
     function __construct($username, $password) {
         $this -> path = 'localhost';
-        $this -> port = '3308';
+        $this -> port = '3306';
         $this -> username = $username;
         $this -> password = $password;
         $this -> database = 'dev_stadium';

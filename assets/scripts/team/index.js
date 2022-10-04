@@ -186,7 +186,7 @@ $(document).ready(() => {
         let userId;
 
         await $.get({
-          url: '/src/actions/get/getSession.php',
+          url: '/pokemon-fangame/src/actions/get/getSession.php',
           success: data => {
             userId = data;
           }
@@ -230,14 +230,14 @@ $(document).ready(() => {
         });
 
         await $.ajax({
-          url: '/src/actions/insert/insertTeam.php',
+          url: '/pokemon-fangame/src/actions/insert/insertTeam.php',
           method: 'post',
           data: {
             team: JSON.stringify(userTeam)
           },
           success: function(status) {
             console.log(document.location);
-            location.href = "/teams";
+            location.href = "/pokemon-fangame/teams";
           }
         });
 

@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['user_id']) || !isset($_GET['leader']) || !isset($_GET['team'])) {
-  header('Location: ./login');
+  header('Location: login');
   exit;
 }
 
@@ -18,54 +18,53 @@ $conn -> close();
 
 <!DOCTYPE html>
 <html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Loading</title>
+    
+    <link href="./assets/images/favicon.png" rel="shortcut icon">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link href="./assets/styles/global.css" rel="stylesheet">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Loading</title>
-
-  <link href="./assets/images/favicon.png" rel="shortcut icon">
-
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <link href="./assets/styles/global.css" rel="stylesheet">
-
-  <script type="module">
-    import pokeapi from './assets/scripts/team/services/pokeapi.js';
-
-    $(document).ready(async () => {
-      let user = await $.getJSON({
-        url: './src/actions/get/getUserTeam.php',
-        data: {
-          user: <?= $_SESSION['user_id'] ?>,
-          team: <?= $_GET['team'] ?>
-        }
-      });
-
-      user.data.pokemons.forEach(async (pokemon, index) => {
-        let { types, stats } = await pokeapi('pokemon', pokemon.id);
-        let species = await pokeapi('pokemon-species', pokemon.id);
-
-        let health = parseInt(Math.trunc((2 * parseInt(stats[0].base_stat) + parseInt(pokemon.health_iv) + (parseInt(pokemon.health_ev) / 4)) + 100 + 10));
-
-        let typesElement = '';
-
-        types.forEach(type => {
-          typesElement += `
+    <script type="module">
+      import pokeapi from './assets/scripts/team/services/pokeapi.js';
+      $(document).ready(async () => {
+        let user = await $.getJSON({
+          url: '/pokemon-fangame/src/actions/get/getUserTeam.php',
+          data: {
+            user: <?= $_SESSION['user_id'] ?>,
+            team: <?= $_GET['team'] ?>
+          }
+        });
+        
+        user.data.pokemons.forEach(async (pokemon, index) => {
+          let { types, stats } = await pokeapi('pokemon', pokemon.id);
+          let species = await pokeapi('pokemon-species', pokemon.id);
+          
+          let health = parseInt(Math.trunc((2 * parseInt(stats[0].base_stat) + parseInt(pokemon.health_iv) + (parseInt(pokemon.health_ev) / 4)) + 100 + 10));
+          
+          let typesElement = '';
+          
+          types.forEach(type => {
+            typesElement += `
             <object
               class="type pokemon-type ${type.type.name}"
               data="http://web.sbs.ifc.edu.br/~pablo.bayerl/unnamedproject/assets/types/icons/${type.type.name}.svg"
               type="image/svg+xml"
               title="${type.type.name}"
-            >
-            </object>
+              >
+              </object>
           `;
         });
-
+        
         let divClass;
 
         if (index === 0) {
@@ -73,62 +72,62 @@ $conn -> close();
         } else {
           divClass = 'pokemon';
         }
-
+        
         $('.user-team .pokemons').append(`
         <div class="${divClass}" pokemon-id="${pokemon.id}">
-          <div class="header">
-            <div class="name">
-              <p>${species.names[7].name}</p>
+        <div class="header">
+        <div class="name">
+        <p>${species.names[7].name}</p>
+        </div>
+        <div class="types">
+        ${typesElement}
             </div>
-            <div class="types">
-              ${typesElement}
             </div>
-          </div>
-          <div class="sprite">
+            <div class="sprite">
             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png">
-          </div>
-          <div class="stats">
+            </div>
+            <div class="stats">
             <table>
-              <tr class="health">
-                <th class="label">Health</th>
-                <td class="total">
-                  <span class="var">${health}</span>
-                  /
-                  <span class="max">${health}</span>
-                </td>
-              </tr>
-              <tr class="health-bar">
-                <td colspan="2">
-                  <div class="health-wrapper">
-                    <div class="bar" style="width: 100%"></div>
-                  </div>
-                </td>
-              </tr>
+            <tr class="health">
+            <th class="label">Health</th>
+            <td class="total">
+            <span class="var">${health}</span>
+            /
+            <span class="max">${health}</span>
+            </td>
+            </tr>
+            <tr class="health-bar">
+            <td colspan="2">
+            <div class="health-wrapper">
+            <div class="bar" style="width: 100%"></div>
+            </div>
+            </td>
+            </tr>
             </table>
-          </div>
+            </div>
+            </div>
+            `);
+            
+        $('.user-team .party').append(`
+        <div class="party-${divClass}" pokemon-id="${pokemon.id}">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png">
         </div>
         `);
-
-        $('.user-team .party').append(`
-          <div class="party-${divClass}" pokemon-id="${pokemon.id}">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png">
-          </div>
-        `);
       });
-
+      
       let leader = await $.getJSON({
-        url: './src/actions/get/getLeaderTeam.php',
+        url: '/pokemon-fangame/src/actions/get/getLeaderTeam.php',
         data: { leader: <?= $_GET['leader'] ?> }
       });
 
       leader.data.pokemons.forEach(async (pokemon, index) => {
         let { types, stats } = await pokeapi('pokemon', pokemon.id);
         let species = await pokeapi('pokemon-species', pokemon.id);
-
+        
         let health = parseInt(Math.trunc((2 * parseInt(stats[0].base_stat) + parseInt(pokemon.health_iv) + (parseInt(pokemon.health_ev) / 4)) + 100 + 10));
 
         let typesElement = '';
-
+        
         types.forEach(type => {
           typesElement += `
             <object
@@ -191,11 +190,12 @@ $conn -> close();
         `);
       });
 
+
       $('#handler').on('click', async e => {
         $('.handler').empty().remove();
 
         await $.ajax({
-          url: './src/actions/battle.php',
+          url: '/pokemon-fangame/src/actions/battle.php',
           method: 'get',
           data: {
             user: <?= $_SESSION['user_id']; ?>,

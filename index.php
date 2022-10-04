@@ -1,6 +1,6 @@
 <?php
 
-header('Location: ./teams');
+header('Location: teams.php');
 
 ?>
 
