@@ -1,4 +1,3 @@
--
 -- Banco de dados: `dev_stadium`
 --
 
