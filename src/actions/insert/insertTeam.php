@@ -17,7 +17,7 @@ $teamCount = intval(mysqli_fetch_assoc($query->raw("select COUNT(team_id) as tea
 var_dump($teamCount);
 
 if ($teamCount >= 3) {
-  header("Location: ../../../teams");
+  header("Location: ../../../teams.php");
   exit;
 }
 

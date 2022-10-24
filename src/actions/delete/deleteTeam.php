@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_GET['id']) || !isset($_SESSION['user_id'])) {
-  header('Location: ../../../teams');
+  header('Location: ../../../teams.php');
   exit;
 }
 
@@ -22,7 +22,7 @@ $userTeam = $query -> raw("select * from user_team where team_id = '".$teamId."'
 
 // Verificar se o usuário possui o time
 if (!$userTeam) {
-  header('Location: ../../../teams');
+  header('Location: ../../../teams.php');
   exit;
 }
 
@@ -42,5 +42,5 @@ $query -> raw("delete from team where team_id = '".$teamId."';");
 
 $conn -> stop();
 
-header('Location: ../../../teams');
+header('Location: ../../../teams.php');
 exit;

@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['user_id']) || !isset($_GET['leader']) || !isset($_GET['team'])) {
-  header('Location: login');
+  header('Location: login.php');
   exit;
 }
 

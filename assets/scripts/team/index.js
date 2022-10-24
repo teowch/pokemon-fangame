@@ -237,7 +237,7 @@ $(document).ready(() => {
           },
           success: function(status) {
             console.log(document.location);
-            location.href = "/pokemon-fangame/teams";
+            location.href = "/pokemon-fangame/teams.php";
           }
         });
 
