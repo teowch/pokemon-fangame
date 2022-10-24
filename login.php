@@ -48,7 +48,7 @@
             </div>
         </form>
         <div class="redirect-register">
-          <span>Don't have an account? <a href="./register">Create one</a>.</span>
+          <span>Don't have an account? <a href="./register.php">Create one</a>.</span>
         </div>
         <script>
           $(document).ready(() => {
@@ -68,7 +68,7 @@
                   }
 
                   if (data.status === 200) {
-                    $('body').append(`<a href="<?= basename(__DIR__) ?>/../teams" style="display: none" id="loginAnchor"></a>`);
+                    $('body').append(`<a href="<?= basename(__DIR__) ?>/../teams.php" style="display: none" id="loginAnchor"></a>`);
 
                     $('#loginAnchor')[0].click();
                   }

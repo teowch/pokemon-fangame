@@ -102,7 +102,7 @@ if (!isset($_SESSION['user_id'])) {
 
       if (!$userTeams || $userTeams -> num_rows < 3) {
         echo '<div class="create-wrapper">';
-        echo '<a href="./create_team"><i class="material-icons">add</i></a>';
+        echo '<a href="./create_team.php"><i class="material-icons">add</i></a>';
         echo '</div>';
       }
 

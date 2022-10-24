@@ -56,7 +56,7 @@
             </div>
         </form>
         <div class="redirect-login">
-          <span>Already have an account? <a href="./login">Log in</a>.</span>
+          <span>Already have an account? <a href="./login.php">Log in</a>.</span>
         </div>
     </div>
     <script>
@@ -79,7 +79,7 @@
               }
 
               if (data.status === 200) {
-                $('body').append(`<a href="<?= basename(__DIR__) ?>/../login" style="display: none" id="registerAnchor"></a>`);
+                $('body').append(`<a href="<?= basename(__DIR__) ?>/../login.php" style="display: none" id="registerAnchor"></a>`);
 
                 $('#registerAnchor')[0].click();
               }

@@ -196,7 +196,7 @@ while ($storedLeader = $storedLeaders -> fetch_assoc()) {
           let selectedTeam = ++index;
           let selectedLeader = $('.leaders-wrapper .leader.selected').attr('leader-order');
 
-          $('body').append(`<a href="<?= basename(__DIR__) ?>/../battle?leader=${selectedLeader}&team=${selectedTeam}" style="display: none" id="battleAnchor"></a>`);
+          $('body').append(`<a href="<?= basename(__DIR__) ?>/../battle.php?leader=${selectedLeader}&team=${selectedTeam}" style="display: none" id="battleAnchor"></a>`);
 
           $('#battleAnchor')[0].click();
         });
