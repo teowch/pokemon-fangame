@@ -232,7 +232,7 @@ table.vertical-table tr:not(.header) {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  padding: 10px;
+  padding: 7px;
 }
 
 .pokemon-table .ability-description {
@@ -327,10 +327,10 @@ table.vertical-table tr:not(.header) {
 }
 
 .moves-table .move-type .type {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  padding: 3px;
+  padding: 2px;
 }
 
 img.placeholder {
@@ -809,7 +809,7 @@ div+.section-title {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  padding: 7px;
+  padding: 3px;
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -908,7 +908,7 @@ div+.section-title {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  padding: 7px;
+  padding: 2px;
 }
 
 .teams-wrapper .team .pokemon .info .types .pokemon-type+.pokemon-type {
@@ -1037,7 +1037,7 @@ div+.section-title {
 .container.teams .team-wrapper .team .pokemon-wrapper .pokemon .types .pokemon-type {
   width: 25px;
   height: 25px;
-  padding: 7px;
+  padding: 2px;
   border-radius: 50%;
 }
 .container.teams .team-wrapper .team .pokemon-wrapper .pokemon .types .pokemon-type + .pokemon-type {

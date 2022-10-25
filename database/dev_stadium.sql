@@ -1,9 +1,8 @@
--
+
 -- Banco de dados: `dev_stadium`
 --
 
-DROP SCHEMA IF EXISTS `dev_stadium`;
-CREATE SCHEMA `dev_stadium`;
+DROP SCHEMA IF EXISTS `dev_stadium`;CREATE SCHEMA `dev_stadium`;
 USE `dev_stadium`;
 
 -- --------------------------------------------------------

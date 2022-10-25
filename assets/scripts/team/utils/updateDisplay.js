@@ -17,7 +17,7 @@ function updateDisplay(element, pokemon) {
         types += `
             <object
                 class="type ${type.type.name}"
-                data="http://web.sbs.ifc.edu.br/~pablo.bayerl/unnamedproject/assets/types/icons/${type.type.name}.svg"
+                data="/pokemon-fangame/assets/images/types/${type.type.name}.svg"
                 type="image/svg+xml"
                 title="${type.type.name}"
             >

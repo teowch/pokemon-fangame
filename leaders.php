@@ -110,8 +110,8 @@ while ($storedLeader = $storedLeaders -> fetch_assoc()) {
           echo    '<div class="hover-effect"></div>';
 
           echo    '<div class="avatar">'.
-          '<img src="http://web.sbs.ifc.edu.br/~pablo.bayerl/unnamedproject/assets/leaders/'.strtolower($leader['leader_name']).'.png">'.
-          '<object class="type leader-type '.$type.'" data="http://web.sbs.ifc.edu.br/~pablo.bayerl/unnamedproject/assets/types/icons/'.$type.'.svg" type="image/svg+xml" title="'.$type.'"></object>'.
+          '<img src="/pokemon-fangame/assets/images/leaders/'.strtolower($leader['leader_name']).'.png">'.
+          '<object class="type leader-type '.$type.'" data="/pokemon-fangame/assets/images/types/'.$type.'.svg" type="image/svg+xml" title="'.$type.'"></object>'.
           '</div>'.
           '<div class="name">'.
           '<p>'.$leader['leader_name'].'</p>'.
@@ -150,7 +150,7 @@ while ($storedLeader = $storedLeaders -> fetch_assoc()) {
             '<div class="types">';
 
             foreach ($types as $type) {
-              echo '<object class="type pokemon-type '.$type['type']['name'].'" data="http://web.sbs.ifc.edu.br/~pablo.bayerl/unnamedproject/assets/types/icons/'.$type['type']['name'].'.svg" type="image/svg+xml" title="'.$type['type']['name'].'"></object>';
+              echo '<object class="type pokemon-type '.$type['type']['name'].'" data="/pokemon-fangame/assets/images/types/'.$type['type']['name'].'.svg" type="image/svg+xml" title="'.$type['type']['name'].'"></object>';
             }
 
             echo        '</div>'.

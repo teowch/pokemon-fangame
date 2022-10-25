@@ -85,7 +85,7 @@ if (!isset($_SESSION['user_id'])) {
                   '<div class="types">';
 
                 foreach($types as $type) {
-                  echo '<object class="type pokemon-type '.$type -> type -> name.'" data="http://web.sbs.ifc.edu.br/~pablo.bayerl/unnamedproject/assets/types/icons/'.$type -> type -> name.'.svg" type="image/svg+xml" title="'.$type -> type -> name.'"></object>';
+                  echo '<object class="type pokemon-type '.$type -> type -> name.'" data="/pokemon-fangame/assets/images/types/'.$type -> type -> name.'.svg" type="image/svg+xml" title="'.$type -> type -> name.'"></object>';
                 }
 
                 echo '</div>';

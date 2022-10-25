@@ -7,7 +7,7 @@ function updateMove(element, move) {
         .append(`
             <object
                 class="type ${move.type}"
-                data="http://web.sbs.ifc.edu.br/~pablo.bayerl/unnamedproject/assets/types/icons/${move.type}.svg"
+                data="/pokemon-fangame/assets/images/types/${move.type}.svg"
                 type="image/svg+xml"
                 title="${move.type}"
             >
