@@ -70,10 +70,10 @@ while ($storedLeader = $storedLeaders -> fetch_assoc()) {
   unset($conn);
   ?>
 
-  <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html>
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -81,21 +81,22 @@ while ($storedLeader = $storedLeaders -> fetch_assoc()) {
 
     <link href="./assets/images/favicon.png" rel="shortcut icon">
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link href="./assets/styles/global.css" rel="stylesheet">
-  </head>
+</head>
 
-  <body>
+<body>
     <?php include './components/navbar.php'; ?>
     <?php echo '<div class="loading"></div>'; ?>
 
     <div class="container leaders">
-      <h1 class="section-title">Leaders</h1>
-      <div class="leaders-wrapper">
-        <?php
+        <h1 class="section-title">Leaders</h1>
+        <div class="leaders-wrapper">
+            <?php
         foreach ($leaders as $key => $leader) {
           $type = strtolower($leader['gym_type']);
 
@@ -119,10 +120,10 @@ while ($storedLeader = $storedLeaders -> fetch_assoc()) {
           '</div>';
         }
         ?>
-      </div>
-      <h1 class="section-title">Teams</h1>
-      <div class="teams-wrapper">
-        <?php
+        </div>
+        <h1 class="section-title">Teams</h1>
+        <div class="teams-wrapper">
+            <?php
         foreach ($leaders as $key => $leader) {
           $order = $key + 1;
 
@@ -153,7 +154,7 @@ while ($storedLeader = $storedLeaders -> fetch_assoc()) {
               echo '<object class="type pokemon-type '.$type['type']['name'].'" data="/pokemon-fangame/assets/images/types/'.$type['type']['name'].'.svg" type="image/svg+xml" title="'.$type['type']['name'].'"></object>';
             }
 
-            echo        '</div>'.
+            echo '</div>'.
             '</div>'.
             '</div>';
           }
@@ -161,68 +162,71 @@ while ($storedLeader = $storedLeaders -> fetch_assoc()) {
           echo '</div>';
         }
         ?>
-      </div>
-      <div class="select-team">
-        <div class="team-list-wrapper">
-          <div class="header">
-            <h1>Select your team</h1>
-            <span class="close-button"><i class="material-icons">close</i></span>
-          </div>
-          <div class="buttons">
-            <?php
+        </div>
+        <div class="select-team">
+            <div class="team-list-wrapper">
+                <div class="header">
+                    <h1>Select your team</h1>
+                    <span class="close-button"><i class="material-icons">close</i></span>
+                </div>
+                <div class="buttons">
+                    <?php
               foreach ($userTeams as $key => $team) {
                 echo '<button type="button" team-order="'.$key.'">'.$team.'</button>';
               }
             ?>
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <script>
     $(document).ready(() => {
-      document.title = 'Leaders';
+        document.title = 'Leaders';
 
-      $('.loading').remove();
+        $('.loading').remove();
 
-      $('.select-team .close-button').on('click', () => {
-        if ($('.select-team').css('display') != 'none') {
-          $('.select-team').css('display', 'none');
-        }
-      });
-
-      $('.select-team .buttons button').each(index => {
-        $(`.select-team .buttons button:eq(${index})`).on('click', () => {
-          let selectedTeam = ++index;
-          let selectedLeader = $('.leaders-wrapper .leader.selected').attr('leader-order');
-
-          $('body').append(`<a href="<?= basename(__DIR__) ?>/../battle.php?leader=${selectedLeader}&team=${selectedTeam}" style="display: none" id="battleAnchor"></a>`);
-
-          $('#battleAnchor')[0].click();
+        $('.select-team .close-button').on('click', () => {
+            if ($('.select-team').css('display') != 'none') {
+                $('.select-team').css('display', 'none');
+            }
         });
-      });
 
-      $('.leaders-wrapper .leader').on('click', e => {
-        if ($(e.currentTarget).hasClass('selected')) {
-          $('.select-team').css('display', 'flex');
-        }
+        $('.select-team .buttons button').each(index => {
+            $(`.select-team .buttons button:eq(${index})`).on('click', () => {
+                let selectedTeam = ++index;
+                let selectedLeader = $('.leaders-wrapper .leader.selected').attr(
+                    'leader-order');
 
-        $('.leaders-wrapper .leader.selected')
-        .removeClass('selected');
+                $('body').append(
+                    `<a href="<?= basename(__DIR__) ?>/../battle.php?leader=${selectedLeader}&team=${selectedTeam}" style="display: none" id="battleAnchor"></a>`
+                );
 
-        $(e.currentTarget)
-        .addClass('selected');
+                $('#battleAnchor')[0].click();
+            });
+        });
 
-        let leaderOrder = $(e.currentTarget).attr('leader-order');
+        $('.leaders-wrapper .leader').on('click', e => {
+            if ($(e.currentTarget).hasClass('selected')) {
+                $('.select-team').css('display', 'flex');
+            }
 
-        $(`.teams-wrapper .team.selected`)
-        .removeClass('selected');
+            $('.leaders-wrapper .leader.selected')
+                .removeClass('selected');
 
-        $(`.teams-wrapper .team[leader-order=${leaderOrder}]`)
-        .addClass('selected');
-      });
+            $(e.currentTarget)
+                .addClass('selected');
+
+            let leaderOrder = $(e.currentTarget).attr('leader-order');
+
+            $(`.teams-wrapper .team.selected`)
+                .removeClass('selected');
+
+            $(`.teams-wrapper .team[leader-order=${leaderOrder}]`)
+                .addClass('selected');
+        });
     });
     </script>
-  </body>
+</body>
 
-  </html>
+</html>

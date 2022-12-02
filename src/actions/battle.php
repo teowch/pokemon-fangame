@@ -112,9 +112,11 @@ while ($pokemon = $teamPokemons -> fetch_assoc()) {
   );
 }
 
-$battleResponse = json_decode(file_get_contents('http://poke-battle-ifc.herokuapp.com/?user='.json_encode($userTeam).'&leader='.json_encode($leaderTeam)));
+// $battleResponse = json_decode(file_get_contents('http://poke-battle-ifc.herokuapp.com/?user='.json_encode($userTeam).'&leader='.json_encode($leaderTeam)));
+$battleResponse = json_decode(file_get_contents('http://localhost:8080?user='.json_encode($userTeam).'&leader='.json_encode($leaderTeam)));
 
 header('Content-Type: application/json');
+// echo json_encode($userTeam).'<br><br>'.json_encode($leaderTeam);
 echo json_encode($battleResponse);
 
 $conn -> stop();
